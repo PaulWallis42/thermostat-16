@@ -1,4 +1,61 @@
-var Thermostat = function() {};
+function Thermostat(){
+  this.DEFAULT_TEMP = 20;
+  this.temp = this.DEFAULT_TEMP;
+  this.powerSave = true;
+  this.displayColour;
+}
+
+Thermostat.prototype.currentTemp = function () {
+  return this.temp;
+};
+
+Thermostat.prototype.increaseTemp = function () {
+  if (this.powerSave === true && this.temp < 25) {
+    this.temp ++;
+  } else if (this.powerSave === false && this.temp < 32) {
+    this.temp ++;
+  } else {
+    return "Max Temp Reached";
+  }
+};
+
+Thermostat.prototype.decreaseTemp = function () {
+  if (this.temp > 10) {
+    this.temp --;
+  } else {
+    return "Minimum Temp Reached";
+  }
+};
+
+Thermostat.prototype.resetTemp = function () {
+  this.temp = this.DEFAULT_TEMP;
+};
+
+Thermostat.prototype.isPowerSaveOn = function () {
+  return this.powerSave;
+};
+
+Thermostat.prototype.powerSaveOff = function () {
+  this.powerSave = false;
+};
+
+Thermostat.prototype.powerSaveOn = function () {
+  this.powerSave = true;
+};
+
+Thermostat.prototype.displayColour = function () {
+  if (this.temp < 18) {
+    return this.displayColour = "Green";
+  } else if (this.temp >= 18 && this.temp < 25) {
+    return this.displayColour = "Yellow";
+  } else {
+    return this.displayColour = "Red";
+  }
+};
+
+/* The way I did it originally =>
+
+function Thermostat(){}
 
 var DefaultTemp = 20;
 var temp = DefaultTemp;
@@ -52,3 +109,5 @@ Thermostat.prototype.displayColour = function () {
     return displayColour = "Red";
   }
 };
+
+*/
