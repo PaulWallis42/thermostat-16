@@ -75,4 +75,24 @@ describe('The temperature', function(){
     expect(thermostat.currentTemp()).toEqual(32);
   });
 
+  it('display is green if temp is < 18', function(){
+    thermostat.decreaseTemp();
+    thermostat.decreaseTemp();
+    thermostat.decreaseTemp();
+    expect(thermostat.displayColour()).toEqual("Green")
+  });
+
+  it('display is yellow if temp is 18 - 24', function(){
+    expect(thermostat.displayColour()).toEqual("Yellow")
+  });
+
+  it('display is red if temp >= 25', function(){
+    var i = 0;
+    do {
+      thermostat.increaseTemp();
+      i ++;
+    } while (i < 6)
+    expect(thermostat.displayColour()).toEqual("Red")
+  });
+
 });
