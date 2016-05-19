@@ -34,12 +34,25 @@ $(document).ready(function(){
     $('#power-saving-status').text('Off');
   })
 
+  displayWeather('London');
+
   $('#select-city').submit(function(event) {
     event.preventDefault();
     var city = $('#current-city').val();
-    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + ',uk&appid=9357e6bbfecb91c85ad67446164bfbce&units=metric', function(data) {
+    displayWeather(city);
       $('#current-temperature').text(data.main.temp);
     })
-  })
+
+//  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + ',uk&appid=9357e6bbfecb91c85ad67446164bfbce&units=metric', function(data) {
+//  The above line is below refactored into a function.
+
+  function displayWeather(city) {
+    var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
+    var token = ',uk&appid=9357e6bbfecb91c85ad67446164bfbce';
+    var units = '&units=metric';
+    $.get(url + token + units, function(data){
+      $('#current-temperature').text(data.main.temp);
+    })
+  }
 
 })
