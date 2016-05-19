@@ -2,7 +2,7 @@ function Thermostat(){
   this.DEFAULT_TEMP = 20;
   this.temp = this.DEFAULT_TEMP;
   this.powerSave = true;
-  this.displayColour;
+  this.tempColor;
 }
 
 Thermostat.prototype.currentTemp = function () {
@@ -45,11 +45,11 @@ Thermostat.prototype.powerSaveOn = function () {
 
 Thermostat.prototype.displayColour = function () {
   if (this.temp < 18) {
-    return this.displayColour = "Green";
+    return this.tempColor = "green";
   } else if (this.temp >= 18 && this.temp < 25) {
-    return this.displayColour = "Yellow";
+    return this.tempColor = "yellow";
   } else {
-    return this.displayColour = "Red";
+    return this.tempColor = "red";
   }
 };
 
