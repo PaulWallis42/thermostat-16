@@ -40,7 +40,6 @@ $(document).ready(function(){
     event.preventDefault();
     var city = $('#current-city').val();
     displayWeather(city);
-      $('#current-temperature').text(data.main.temp);
     })
 
 //  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + ',uk&appid=9357e6bbfecb91c85ad67446164bfbce&units=metric', function(data) {
@@ -51,7 +50,7 @@ $(document).ready(function(){
     var token = ',uk&appid=9357e6bbfecb91c85ad67446164bfbce';
     var units = '&units=metric';
     $.get(url + token + units, function(data){
-      $('#current-temperature').text(data.main.temp);
+      $('#current-temperature').text(city + ': ' + data.main.temp);
     })
   }
 
